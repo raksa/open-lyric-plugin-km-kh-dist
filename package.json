@@ -1,0 +1,58 @@
+{
+  "name": "open-lyric-plugin-km-kh",
+  "version": "0.1.0",
+  "description": "Khmer (km-KH) support for Open Lyric: NiDA on-screen keyboard, Hunspell spellcheck, segmentation, and Khmer-capable fonts.",
+  "license": "MIT",
+  "author": "raksa <eng.raksa@gmail.com>",
+  "homepage": "https://github.com/raksa/open-lyric/tree/main/packages/open-lyric-plugin-km-kh#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raksa/open-lyric.git",
+    "directory": "packages/open-lyric-plugin-km-kh"
+  },
+  "bugs": {
+    "url": "https://github.com/raksa/open-lyric/issues"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "open-lyric",
+    "khmer",
+    "km-KH",
+    "cambodia",
+    "spellcheck",
+    "hunspell",
+    "keyboard",
+    "nida"
+  ],
+  "peerDependencies": {
+    "open-lyric": "^0.1.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
