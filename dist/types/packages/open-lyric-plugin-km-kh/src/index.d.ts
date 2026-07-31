@@ -11,10 +11,14 @@
  * - `OpenLyricMarkdownManagerPluginKmKh` — `markdown`: Khmer-capable fonts.
  * - `OpenLyricPluginKmKh`                — `lyric`: Khmer-capable fonts.
  *
- * The heavy contribution data — dictionaries, word patterns, provider
- * factory, keyboard spec — is *not* bundled here. It already ships inside
- * `open-lyric` (the component barrel transitively contains the built-in
- * plugin registry), so this package imports it from `open-lyric/internal`;
- * see `packages/build-support.ts`.
+ * The heavy contribution data ships WITH this package: the Hunspell
+ * dictionaries (`dics/`), the segmentation-aware spellcheck worker, the NiDA
+ * keyboard and its stylesheet, and the Battambang faces
+ * (`km_KH_fonts.scss`). `EditorPluginKmKh.install()` publishes the registry
+ * data itself, so composing the plugin is what enables Khmer on a host —
+ * the core `open-lyric` bundle carries none of it. Only the core's stateful
+ * shared modules are imported from `open-lyric/internal`; see
+ * `packages/build-support.ts`.
  */
-export { EditorPluginKmKh, OpenLyricMarkdownManagerPluginKmKh, OpenLyricPluginKmKh, } from '../../../editor/plugins/km_KH/km_KH_component_plugins.js';
+export { EditorPluginKmKh, OpenLyricMarkdownManagerPluginKmKh, OpenLyricPluginKmKh, } from '../../../src/plugins/km_KH/km_KH_component_plugins.js';
+export { KHMER_BILINGUAL_PRAYER_EXAMPLE, KHMER_CALL_TO_WORSHIP_EXAMPLE, } from '../../../src/plugins/km_KH/examples/index.js';
