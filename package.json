@@ -1,6 +1,6 @@
 {
   "name": "open-lyric-plugin-km-kh",
-  "version": "0.1.1",
+  "version": "0.1.6",
   "description": "Khmer (km-KH) support for Open Lyric: NiDA on-screen keyboard, Hunspell spellcheck, segmentation, and Khmer-capable fonts.",
   "license": "MIT",
   "author": "raksa <eng.raksa@gmail.com>",

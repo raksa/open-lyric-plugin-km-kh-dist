@@ -96,7 +96,7 @@ declare const olEditorPluginData: {
      * here, and the app-page preview font-family datalist lists it.
      */
     fonts: {
-        faces: string[];
+        faces: any[];
         stack: string;
         sampleText: string;
     };
@@ -114,7 +114,7 @@ declare const olEditorPluginData: {
      */
     transcriptLocales: string[];
     pptxStyle: {
-        fontFamilyChoices: string[];
+        fontFamilyChoices: any[];
         fontDetectionSampleText: string;
         fontSize: number;
     };
