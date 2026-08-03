@@ -41,6 +41,14 @@ surfaces immediately rather than silently doing nothing.
 `EditorPluginKmKh` also exposes `toggleKeyboard()` / `closeKeyboard()` /
 `isKeyboardMounted`, mirroring the Ctrl+Alt+K Monaco actions.
 
+`version` is this package's own version, taken from its `package.json` at build
+time. It bumps independently of the core's, so alias one of them when reporting
+both:
+
+```js
+import { version as kmKhVersion } from 'open-lyric-plugin-km-kh';
+```
+
 ## Module formats
 
 Ships **ESM and CommonJS**, with per-condition TypeScript declarations:

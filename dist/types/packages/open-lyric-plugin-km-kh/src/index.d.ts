@@ -22,3 +22,4 @@
  */
 export { EditorPluginKmKh, OpenLyricMarkdownManagerPluginKmKh, OpenLyricPluginKmKh, } from '../../../src/plugins/km_KH/km_KH_component_plugins.js';
 export { KHMER_BILINGUAL_PRAYER_EXAMPLE, KHMER_CALL_TO_WORSHIP_EXAMPLE, } from '../../../src/plugins/km_KH/examples/index.js';
+export { version } from './version.js';
