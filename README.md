@@ -90,14 +90,32 @@ duplicate.
   an `Editor` must not restyle the text being edited, so Monaco and the
   textareas keep their own font and Khmer falls through to the browser's
   default face for the script. A host that wants Battambang in the editor asks
-  for it explicitly: `editor.fontFamily = '…'` (the face name is readable from
-  the plugin's `fonts` data, or from the `--ol-plugin-km-kh-font-family`
-  custom property its stylesheet publishes).
+  for it explicitly: `editor.fontFamily = KM_KH_WEBFONT_FACE` — the face name is
+  a named export of this package, so no host has to spell `'editor-Battambang'`
+  itself. (It is also readable from the plugin's `fonts` data, or from the
+  `--ol-plugin-km-kh-font-family` custom property its stylesheet publishes.)
 - **The `@font-face` rules ship with THIS package** (`km_KH_fonts.scss`,
   emitted with the Battambang `.ttf` files into `dist/assets`). Every plugin
   class contributes the sheet through its `style` slot, so any surface that
   composes km-KH — bare embeds included — gets `editor-Battambang` without
   loading anything else.
+- **`installShellStyle()` declares the faces without attaching the plugin.** A
+  `style` contribution is scoped to the component it is attached to and goes
+  away with it, which makes the faces conditional on an attach. A page that
+  only wants to NAME the face — assigning `fontFamily`/`fontFaces` so the
+  settings popup offers it, as the standalone preview page entries do — would
+  otherwise select a face the document never declared and get a silent fallback
+  to a system Khmer face. So each class also exposes a static:
+
+  ```ts
+  OpenLyricPluginKmKh.installShellStyle(); // once, at page boot
+  ```
+
+  Page-lifetime, into `document.head`, no teardown, idempotent — and it shares
+  a marker with the attach path, so composing the plugin as well still yields
+  one sheet. It declares the `@font-face` rules and nothing else: a face styles
+  no element until something names it, whereas `EditorPluginKmKh`'s other sheet
+  (the NiDA keyboard chrome) does style elements and stays attach-scoped.
 - **The spellcheck engine is still page-global** — see the standalone-chrome
   notes in `research/editor-structure-implemented.md`.
 

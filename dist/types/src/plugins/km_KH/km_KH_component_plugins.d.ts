@@ -5,6 +5,13 @@ declare class EditorPluginKmKh implements OpenLyricPlugin {
     readonly apiVersion: 1;
     readonly surfaces: readonly OpenLyricSurface[];
     readonly contributes: OpenLyricContributions;
+    /**
+     * Declare the Khmer `@font-face` rules in `document.head` for the page's
+     * lifetime, without attaching the plugin to an `Editor`. The faces ONLY —
+     * the NiDA keyboard chrome this plugin also contributes stays attach-scoped,
+     * since it styles elements. See {@link installShellStyle}.
+     */
+    static installShellStyle(): void;
     private keyboardController;
     /** Same store the application uses, so keyboard prefs stay shared. */
     private readonly preferences;
@@ -37,6 +44,13 @@ declare class OpenLyricMarkdownManagerPluginKmKh implements OpenLyricPlugin {
     readonly apiVersion: 1;
     readonly surfaces: readonly OpenLyricSurface[];
     readonly contributes: OpenLyricContributions;
+    /**
+     * Declare the Khmer `@font-face` rules in `document.head` for the page's
+     * lifetime, without attaching the plugin to a surface — what a page that only
+     * names the face (`fontFamily`/`fontFaces`) needs so the face it names
+     * actually resolves. See {@link installShellStyle}.
+     */
+    static installShellStyle(): void;
     install(): void;
     uninstall(): void;
 }
@@ -46,6 +60,13 @@ declare class OpenLyricPluginKmKh implements OpenLyricPlugin {
     readonly apiVersion: 1;
     readonly surfaces: readonly OpenLyricSurface[];
     readonly contributes: OpenLyricContributions;
+    /**
+     * Declare the Khmer `@font-face` rules in `document.head` for the page's
+     * lifetime, without attaching the plugin to a surface — what a page that only
+     * names the face (`fontFamily`/`fontFaces`) needs so the face it names
+     * actually resolves. See {@link installShellStyle}.
+     */
+    static installShellStyle(): void;
     install(): void;
     uninstall(): void;
 }

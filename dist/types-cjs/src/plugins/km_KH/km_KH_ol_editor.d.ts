@@ -1,4 +1,14 @@
 import { createKhmerSpellcheckProvider } from './spellcheck-khmer-provider.js';
+/**
+ * The webfont this plugin ships (`km_KH_fonts.scss`) and the system Khmer
+ * faces it falls back to. Declared HERE, once: nothing outside this plugin
+ * names `editor-Battambang`. Everything that needs the name reads it back:
+ * the component plugins' `language.fontFaces` + preview stack
+ * (`km_KH_component_plugins.ts`), the PowerPoint export's face detection, the
+ * app's initial font wait, and both font pickers (through
+ * `getRegisteredPluginFonts()`).
+ */
+declare const KM_KH_WEBFONT_FACE = "editor-Battambang";
 declare function normalizeKhmerWord(word: any): string;
 declare const olEditorPluginData: {
     id: string;
@@ -119,4 +129,4 @@ declare const olEditorPluginData: {
         fontSize: number;
     };
 };
-export { olEditorPluginData };
+export { KM_KH_WEBFONT_FACE, olEditorPluginData };
