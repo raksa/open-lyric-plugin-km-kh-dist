@@ -37,46 +37,55 @@ Use this example to test Khmer and English line pairs in the same Open Lyric dra
 \`\`\`ol:Outro
 | D | A/C# | Bm7 | G | D |
 \`\`\`
-`,y=`# ព្រះគុណនៅព្រឹកនេះ
-
-Use this example to test Khmer-only Open Lyric sections with a simple worship flow.
-
-\`\`\`ol:Config
-- Title: ព្រះគុណនៅព្រឹកនេះ
-- Subtitle: ព្រឹកនេះ Sub-Title
-- Artist: Open Lyric Khmer Plugin
-- Copyright: 2026 Open Lyric
-- Key: G
-- Tempo: 76bpm
-- Locales: en-US, km-KH
-- Time: 4/4
-- Structure: IV1CV2CO
-\`\`\`
-
-\`\`\`ol:Intro
-| G | D/F# | Em | C |
-\`\`\`
-
-\`\`\`ol:Verse 1
-ព្រះគុណទ្រង់ថ្មីរៀងរាល់ព្រឹក
-ចិត្តខ្ញុំសរសើរព្រះនាមទ្រង់
-\`\`\`
-
-\`\`\`ol:Chorus
-|[G]ព្រះអង្គល្អគ្រប់[D/F#]ពេលវេលា
-|[Em]ខ្ញុំសូមថ្វាយសិរី[C]ល្អដល់ទ្រង់
-|[G]សេចក្ដីស្រឡាញ់មិន[D/F#]ចេះបញ្ចប់
-|[Em]ព្រះយេស៊ូវទ្រង់នៅជា[C]មួយខ្ញុំ
-\`\`\`
-
-\`\`\`ol:Verse 2
-ពេលខ្ញុំអស់កម្លាំងទ្រង់ជាកម្លាំងថ្មី
-ពេលខ្ញុំភ័យខ្លាចទ្រង់នាំឲ្យមានសង្ឃឹម
-\`\`\`
-
-\`\`\`ol:Outro
-| G | D/F# | Em | C | G |
-\`\`\`
+`,y=`# ព្រះគុណនៅព្រឹកនេះ\r
+\r
+Use this example to test Khmer-only Open Lyric sections with a simple worship flow.\r
+\r
+\`\`\`ol:Config\r
+- Title: ព្រះគុណនៅព្រឹកនេះ\r
+- Subtitle: ព្រឹកនេះ Sub-Title\r
+- Artist: Open Lyric Khmer Plugin\r
+- Copyright: 2026 Open Lyric\r
+- Key: G\r
+- Tempo: 76bpm\r
+- Locales: en-US, km-KH\r
+- Time: 4/4\r
+- Structure: IV1CV2CO\r
+\`\`\`\r
+\r
+\`\`\`ol:Intro\r
+| G | D/F# | Em | C |\r
+\`\`\`\r
+\r
+\`\`\`ol:Verse 1\r
+ព្រះគុណទ្រង់ថ្មីរៀងរាល់ព្រឹក\r
+ចិត្តខ្ញុំសរសើរព្រះនាមទ្រង់\r
+\r
+// this is comment\r
+\`\`\`\r
+\r
+\`\`\`ol:Chorus\r
+|[G]ព្រះអង្គល្អគ្រប់[D/F#]ពេលវេលា\r
+|[Em]ខ្ញុំសូមថ្វាយសិរី[C]ល្អដល់ទ្រង់\r
+|[G]សេចក្ដីស្រឡាញ់មិន[D/F#]ចេះបញ្ចប់\r
+|[Em]ព្រះយេស៊ូវទ្រង់នៅជា[C]មួយខ្ញុំ\r
+\`\`\`\r
+\r
+\`\`\`ol:Verse 2\r
+ពេលខ្ញុំអស់កម្លាំងទ្រង់ជាកម្លាំងថ្មី\r
+ពេលខ្ញុំភ័យខ្លាចទ្រង់នាំឲ្យមានសង្ឃឹម\r
+\`\`\`\r
+\r
+\`\`\`ol:Note 1\r
+|[C#m]Jesus, You carried my [B/D#]burden\r
+|[E]far beyond the reach of night\r
+|[C#m]Jesus, You opened my [B/D#]future\r
+|[E]with resurrection light\r
+\`\`\`\r
+\r
+\`\`\`ol:Outro\r
+| G | D/F# | Em | C | G |\r
+\`\`\`\r
 `,b=v,ee=`debug`,x=globalThis;function S(){return new URLSearchParams(globalThis.location?.search||``).get(ee)?.trim().toLowerCase()===`true`}function C(){return!!x.__openLyricE2E||S()}function w(e,...t){if(!C()||!t.length)return;let[n,...r]=t;if(typeof n==`string`){let t=n.startsWith(`[Editor timing]`)?n:`[Editor timing] ${n}`;e.call(console,t,...r);return}e.call(console,`[Editor timing]`,n,...r)}var T=new Map,te=`​`,ne=/android|ios|iphone|ipad|ipod/iu,E=/android|iphone|ipad|ipod/iu,D=/macintosh/iu,re=/\u1780\*\*/gu,ie=`ក្ត`;function O(){return typeof globalThis.performance?.now==`function`?globalThis.performance.now():Date.now()}function k(e,t,n=``){let r=O()-t;return w(console.info,`provider ${e}: ${r.toFixed(1)}ms${n?` ${n}`:``}`),r}function ae(e=globalThis.navigator){if(!e)return!1;let t=String(e.userAgentData?.platform||e.platform||``);if(ne.test(t))return!0;let n=String(e.userAgent||``);if(E.test(n))return!0;let r=Number(e.maxTouchPoints||0);return D.test(n)&&r>1}function oe(e){let t=String(e||``);return!t||!ae()?t:t.replace(re,ie)}function A(e){return e?[e.dictionaryName,e.affUrl,e.dicUrl].join(`::`):``}function se(e){let t=A(e);return t?(T.has(t)||T.set(t,l(e).then(e=>{let r=n(e);return r||T.delete(t),r}).catch(e=>{throw T.delete(t),e})),T.get(t)||Promise.resolve(null)):Promise.resolve(null)}function ce(e={}){let t=new Map,n=typeof e.createWorker==`function`?e.createWorker:null,a=r(e),o=s(e),l=new Map,d=new Map,f=null,p=new Map,m=new Map,h=x(`validation`,{dictionaryConfig:a,useDictionarySnapshot:!0}),g=x(`auxiliary`,{dictionaryConfig:a,suggestDictionaryConfigs:o}),_=x(`segmentation`,{dictionaryConfig:a});function v(e){return u(e,`km`)}function y(e){let t=e.flags.includes(`g`)?e.flags:`${e.flags}g`;return new RegExp(e.source,t)}function b(e){return String(e||``).split(te).filter(Boolean).map(e=>`${e}${te}`).join(``)}function ee(e){let t=v(e);return!!(t&&c(t))}function x(e,t={}){return{channelLabel:e,dictionaryConfig:t.dictionaryConfig||null,errorHandler:null,initializePromise:null,messageHandler:null,pendingRequests:new Map,ready:!1,requestId:0,suggestDictionaryConfigs:Array.isArray(t.suggestDictionaryConfigs)?t.suggestDictionaryConfigs:[],useDictionarySnapshot:!!t.useDictionarySnapshot,worker:null}}function S(e,t){e.pendingRequests.forEach(({reject:e})=>e(t)),e.pendingRequests.clear()}function C(e){e?.worker&&(e.worker.removeEventListener(`message`,e.messageHandler),e.worker.removeEventListener(`error`,e.errorHandler),e.worker.terminate(),e.worker=null,e.messageHandler=null,e.errorHandler=null,e.initializePromise=null,e.ready=!1)}function w(e,t){let{id:n,result:r,error:i}=t?.data||{},a=e.pendingRequests.get(n);if(a){if(e.pendingRequests.delete(n),i){a.reject(Error(i));return}a.resolve(r)}}function T(e,t){let n=t?.error instanceof Error?t.error:Error(t?.message||`Khmer spellcheck worker failed.`);console.error(`Khmer spellcheck worker failed (${e.channelLabel}).`,n),C(e),S(e,n)}function ne(e){if(e.worker)return e.worker;let t=n?.(e.channelLabel)||new Worker(new URL(``+new URL(`assets/spellcheck-khmer.worker-CRDoN93Y.js`,import.meta.url).href,``+import.meta.url),{type:`module`});if(!t||typeof t.postMessage!=`function`||typeof t.addEventListener!=`function`||typeof t.removeEventListener!=`function`||typeof t.terminate!=`function`)throw TypeError(`Khmer spellcheck worker factory must return a Worker-like object for ${e.channelLabel}.`);return e.messageHandler=t=>{w(e,t)},e.errorHandler=t=>{T(e,t)},t.addEventListener(`message`,e.messageHandler),t.addEventListener(`error`,e.errorHandler),e.worker=t,e.worker}function E(e,t,n={}){let r=ne(e),i=`khmer-spellcheck-${e.channelLabel}-${e.requestId+1}`;return e.requestId+=1,new Promise((a,o)=>{e.pendingRequests.set(i,{resolve:a,reject:o}),r.postMessage({id:i,payload:n,type:t})})}async function D(e){if(e.ready)return!0;if(!e.dictionaryConfig)return console.error(`Khmer spellcheck dictionary configuration is missing.`),!1;if(!e.initializePromise){let t=O(),n=0,r=0;e.initializePromise=Promise.resolve().then(async()=>{if(!e.useDictionarySnapshot)return null;let t=O(),r=await se(e.dictionaryConfig);return n=O()-t,r||(console.error(`Khmer spellcheck dictionary snapshot could not be prepared.`),null)}).then(t=>{if(e.useDictionarySnapshot&&!t)return{ready:!1};let n=O(),i={dictionaryConfig:e.dictionaryConfig};t&&(i.dictionaryData=t),e.suggestDictionaryConfigs.length&&(i.suggestDictionaryConfigs=e.suggestDictionaryConfigs);let a=E(e,`initialize`,i);return r=O()-n,a}).then(i=>(e.ready=!!i?.ready,e.ready||(e.initializePromise=null),k(`initialize`,t,`channel=${e.channelLabel} ready=${String(e.ready)} payload=${e.useDictionarySnapshot?`snapshot`:`config`} snapshotLoad=${n.toFixed(1)}ms dispatch=${r.toFixed(1)}ms`),e.ready)).catch(i=>(console.error(`Failed to initialize Khmer spellcheck worker (${e.channelLabel}).`,i),k(`initialize`,t,`channel=${e.channelLabel} ready=false payload=${e.useDictionarySnapshot?`snapshot`:`config`} snapshotLoad=${n.toFixed(1)}ms dispatch=${r.toFixed(1)}ms`),e.initializePromise=null,e.ready=!1,!1))}return e.initializePromise}function re(){return D(h)}function ie(){return D(g)}function ae(){return D(_)}async function A(){if(f)return f;let e=(o.length?o:[a]).filter(Boolean);return f=Promise.allSettled(e.map(e=>se(e))).then(e=>e.filter(e=>e.status===`fulfilled`&&e.value?.loaded).map(e=>e.value)),f}async function ce(e){let n=O(),r=new Map,i=Array.from(new Set(e)),a=new Set,o=new Map,s=0;if(!i.length)return k(`checkWords`,n,`words=0`),r;i.forEach(e=>{let n=v(e);if(o.set(e,n),!n||!c(n)){r.set(e,!0),s+=1;return}if(t.has(n)){r.set(e,t.get(n)??!0);return}a.add(n)});let l=i.length-s-a.size;if(!a.size)return k(`checkWords`,n,`words=${i.length} lookup=0 cacheHits=${l} skipped=${s}`),r;if(!await re())return i.forEach(e=>{r.has(e)||r.set(e,!0)}),k(`checkWords`,n,`words=${i.length} lookup=${a.size} cacheHits=${l} skipped=${s} ready=false`),r;let u=await E(h,`checkWords`,{words:Array.from(a)});return Object.entries(u||{}).forEach(([e,n])=>{t.set(e,!!n)}),i.forEach(e=>{if(r.has(e))return;let n=o.get(e);r.set(e,t.get(n)??!0)}),k(`checkWords`,n,`words=${i.length} lookup=${a.size} cacheHits=${l} skipped=${s}`),r}async function j(e){let t=v(e),n=O(),r=Array.from(t||``).length;if(!t||!c(t))return[];if(m.has(t)){let e=m.get(t)||[];return k(`suggest`,n,`channel=${g.channelLabel} cache=hit suggestions=${e.length} chars=${r}`),e}if(!await ie())return k(`suggest`,n,`channel=${g.channelLabel} cache=miss suggestions=0 chars=${r} ready=false`),[];let i=await E(g,`suggest`,{limit:3,word:t}),a=Array.isArray(i)?i:[];return m.set(t,a),k(`suggest`,n,`channel=${g.channelLabel} cache=miss suggestions=${a.length} chars=${r}`),a}async function le(e,t=8){let n=v(e),r=Math.max(1,Number(t)||8);if(!n||!c(n))return[];let a=`${n}::${r}`;if(p.has(a))return p.get(a)||[];let o=await A(),s=i(o,n,r);return p.set(a,s),s}async function ue(e){let t=v(e),n=O(),r=Array.from(t||``).length;if(!t||!c(t))return``;if(d.has(t)){let e=d.get(t)||``;return k(`segment`,n,`channel=${_.channelLabel} cache=hit found=${String(!!e)} chars=${r}`),e}if(l.has(t)){let e=l.get(t);return k(`segment`,n,`channel=${_.channelLabel} cache=pending chars=${r}`),e}let i=(async()=>{if(!await ae())return k(`segment`,n,`channel=${_.channelLabel} cache=miss found=false chars=${r} ready=false`),``;let e=await E(_,`segment`,{word:t}),i=typeof e==`string`?e:``;return d.set(t,i),k(`segment`,n,`channel=${_.channelLabel} cache=miss found=${String(!!i)} chars=${r}`),i})();l.set(t,i);try{return await i}finally{l.delete(t)}}async function de(t,n={}){let r=oe(t),i=n?.specification?.wordPattern instanceof RegExp?n.specification.wordPattern:e.wordPattern instanceof RegExp?e.wordPattern:null;if(!r||!(i instanceof RegExp))return r;let a=Array.from(r.matchAll(y(i)));if(!a.length)return r;let o=Array.from(new Set(a.map(e=>e?.[0]??``).filter(Boolean))),s=await ce(o),c=new Map;await Promise.all(o.map(async e=>{let t=e;if(!(s.get(e)??!0)){let n=await ue(e);n&&(t=n)}c.set(e,b(t)||e)}));let l=``,u=0;return a.forEach(e=>{let t=e?.[0]??``,n=Number(e?.index);if(!t||!Number.isInteger(n)||n<u)return;let i=c.get(t)||t,a=n+t.length;l+=r.slice(u,n),l+=i,i.endsWith(te)&&r.charAt(a)===te&&(a+=1),u=a}),l+=r.slice(u),l}function fe(){let e=Error(`Khmer spellcheck provider disposed.`);S(h,e),S(g,e),S(_,e),C(h),C(g),C(_),l.clear(),t.clear(),p.clear(),f=null,d.clear(),m.clear()}return{languageCode:`km`,checkWords:ce,dispose:fe,getPrefixSuggestions:le,getSegmentationSuggestion:ue,getSuggestions:j,initialize:re,isReady:()=>h.ready,postProcessTranscriptText:de,shouldCheckWord:ee}}var j=typeof globalThis<`u`?globalThis:typeof self<`u`?self:{},le={base:`Normal`,shift:`Shift`,alt:`Alt / Option`,altShift:`Alt + Shift`},ue=[{mode:`base`,prefix:``},{mode:`shift`,prefix:`⇧`},{mode:`alt`,prefix:`Alt`},{mode:`altShift`,prefix:`Alt+⇧`}],de=`editor.action.triggerSuggest`,fe=4,pe=.12,me=`◌`,he=/[\u1780-\u17B3]/u,ge=/[\u17B4-\u17D3]/u,_e={"​":`ZWSP`,"\xA0":`NBSP`," ":`Space`,"	":`Tab`,"\n":`Enter`},ve={Backquote:"`",Digit1:`1`,Digit2:`2`,Digit3:`3`,Digit4:`4`,Digit5:`5`,Digit6:`6`,Digit7:`7`,Digit8:`8`,Digit9:`9`,Digit0:`0`,Minus:`-`,Equal:`=`,KeyQ:`Q`,KeyW:`W`,KeyE:`E`,KeyR:`R`,KeyT:`T`,KeyY:`Y`,KeyU:`U`,KeyI:`I`,KeyO:`O`,KeyP:`P`,BracketLeft:`[`,BracketRight:`]`,Backslash:`\\`,KeyA:`A`,KeyS:`S`,KeyD:`D`,KeyF:`F`,KeyG:`G`,KeyH:`H`,KeyJ:`J`,KeyK:`K`,KeyL:`L`,Semicolon:`;`,Quote:`'`,KeyZ:`Z`,KeyX:`X`,KeyC:`C`,KeyV:`V`,KeyB:`B`,KeyN:`N`,KeyM:`M`,Comma:`,`,Period:`.`,Slash:`/`,Space:`Space`},M={base:{Backquote:`«`,Digit1:`១`,Digit2:`២`,Digit3:`៣`,Digit4:`៤`,Digit5:`៥`,Digit6:`៦`,Digit7:`៧`,Digit8:`៨`,Digit9:`៩`,Digit0:`០`,Minus:`ឥ`,Equal:`ឲ`,KeyQ:`ឆ`,KeyW:`ឹ`,KeyE:`េ`,KeyR:`រ`,KeyT:`ត`,KeyY:`យ`,KeyU:`ុ`,KeyI:`ិ`,KeyO:`ោ`,KeyP:`ផ`,BracketLeft:`ៀ`,BracketRight:`ឪ`,Backslash:`ឮ`,KeyA:`ា`,KeyS:`ស`,KeyD:`ដ`,KeyF:`ថ`,KeyG:`ង`,KeyH:`ហ`,KeyJ:`្`,KeyK:`ក`,KeyL:`ល`,Semicolon:`ើ`,Quote:`់`,KeyZ:`ឋ`,KeyX:`ខ`,KeyC:`ច`,KeyV:`វ`,KeyB:`ប`,KeyN:`ន`,KeyM:`ម`,Comma:`ុំ`,Period:`។`,Slash:`៊`,Space:`​`},shift:{Backquote:`»`,Digit1:`!`,Digit2:`ៗ`,Digit3:`"`,Digit4:`៛`,Digit5:`%`,Digit6:`៍`,Digit7:`័`,Digit8:`៏`,Digit9:`(`,Digit0:`)`,Minus:`៌`,Equal:`ឱ`,KeyQ:`ឈ`,KeyW:`ឺ`,KeyE:`ែ`,KeyR:`ឬ`,KeyT:`ទ`,KeyY:`ួ`,KeyU:`ូ`,KeyI:`ី`,KeyO:`ៅ`,KeyP:`ភ`,BracketLeft:`ឿ`,BracketRight:`ឧ`,Backslash:`ឭ`,KeyA:`ាំ`,KeyS:`ៃ`,KeyD:`ឌ`,KeyF:`ធ`,KeyG:`អ`,KeyH:`ះ`,KeyJ:`ញ`,KeyK:`គ`,KeyL:`ឡ`,Semicolon:`ោះ`,Quote:`៉`,KeyZ:`ឍ`,KeyX:`ឃ`,KeyC:`ជ`,KeyV:`េះ`,KeyB:`ព`,KeyN:`ណ`,KeyM:`ំ`,Comma:`ុះ`,Period:`៕`,Slash:`?`,Space:` `},alt:{Backquote:`។ល។`,Digit1:`‌`,Digit2:`@`,Digit3:`៑`,Digit4:`$`,Digit5:`ៜ`,Digit6:`៙`,Digit7:`៚`,Digit8:`*`,Digit9:`{`,Digit0:`}`,Minus:`៝`,Equal:`៎`,KeyE:`ឯ`,KeyR:`ឫ`,BracketLeft:`ឩ`,BracketRight:`ឳ`,KeyI:`ឦ`,KeyP:`ឰ`,Backslash:`\\`,KeyK:`ឝ`,KeyL:`:`,Semicolon:`៖`,Quote:`ៈ`,KeyB:`ឞ`,Comma:`,`,Period:`.`,Slash:`/`,Space:`\xA0`},altShift:{KeyQ:`᧠`,KeyW:`᧡`,KeyE:`᧢`,KeyR:`᧣`,KeyT:`᧤`,KeyY:`᧥`,KeyU:`᧦`,KeyI:`᧧`,KeyO:`᧨`,KeyP:`᧩`,BracketLeft:`᧪`,KeyA:`᧫`,KeyS:`᧬`,KeyD:`᧭`,KeyF:`᧮`,KeyG:`᧯`,KeyH:`᧰`,KeyJ:`᧱`,KeyK:`᧲`,KeyL:`᧳`,Semicolon:`᧴`,Quote:`᧵`,KeyZ:`᧶`,KeyX:`᧷`,KeyC:`᧸`,KeyV:`᧹`,KeyB:`᧺`,KeyN:`᧻`,KeyM:`᧼`,Comma:`᧽`,Period:`᧾`,Slash:`᧿`,Space:`\xA0`}},N={Backquote:"`",Digit1:`1`,Digit2:`2`,Digit3:`3`,Digit4:`4`,Digit5:`5`,Digit6:`6`,Digit7:`7`,Digit8:`8`,Digit9:`9`,Digit0:`0`,Minus:`-`,Equal:`=`,KeyQ:`q`,KeyW:`w`,KeyE:`e`,KeyR:`r`,KeyT:`t`,KeyY:`y`,KeyU:`u`,KeyI:`i`,KeyO:`o`,KeyP:`p`,BracketLeft:`[`,BracketRight:`]`,Backslash:`\\`,KeyA:`a`,KeyS:`s`,KeyD:`d`,KeyF:`f`,KeyG:`g`,KeyH:`h`,KeyJ:`j`,KeyK:`k`,KeyL:`l`,Semicolon:`;`,Quote:`'`,KeyZ:`z`,KeyX:`x`,KeyC:`c`,KeyV:`v`,KeyB:`b`,KeyN:`n`,KeyM:`m`,Comma:`,`,Period:`.`,Slash:`/`,Space:` `},ye={Backquote:`~`,Digit1:`!`,Digit2:`@`,Digit3:`#`,Digit4:`$`,Digit5:`%`,Digit6:`^`,Digit7:`&`,Digit8:`*`,Digit9:`(`,Digit0:`)`,Minus:`_`,Equal:`+`,KeyQ:`Q`,KeyW:`W`,KeyE:`E`,KeyR:`R`,KeyT:`T`,KeyY:`Y`,KeyU:`U`,KeyI:`I`,KeyO:`O`,KeyP:`P`,BracketLeft:`{`,BracketRight:`}`,Backslash:`|`,KeyA:`A`,KeyS:`S`,KeyD:`D`,KeyF:`F`,KeyG:`G`,KeyH:`H`,KeyJ:`J`,KeyK:`K`,KeyL:`L`,Semicolon:`:`,Quote:`"`,KeyZ:`Z`,KeyX:`X`,KeyC:`C`,KeyV:`V`,KeyB:`B`,KeyN:`N`,KeyM:`M`,Comma:`<`,Period:`>`,Slash:`?`,Space:` `},be={base:N,shift:ye,alt:{...N},altShift:{...ye}},P=[{id:`khmer`,footerText:`NiDA layout with default zero-width space behavior for Khmer word breaks.`,menuLabel:`Khmer NiDA`,title:`អក្សរខ្មែរ NiDA`,titleLang:`km`,triggerLabel:`Khmer`,usesNativePhysicalKeyboard:!1,visibleZwspLabel:`ចន្លោះមើលមិនឃើញ`,keyLayouts:M},{id:`english`,footerText:`US layout on-screen. Physical typing uses your system's US-International behavior.`,menuLabel:`English (US)`,title:`English (US)`,titleLang:`en`,triggerLabel:`English`,usesNativePhysicalKeyboard:!0,keyLayouts:be}],xe=P[0].id,Se=Object.freeze(Object.fromEntries(P.map(e=>[e.id,e]))),Ce=[[{code:`Backquote`},{code:`Digit1`},{code:`Digit2`},{code:`Digit3`},{code:`Digit4`},{code:`Digit5`},{code:`Digit6`},{code:`Digit7`},{code:`Digit8`},{code:`Digit9`},{code:`Digit0`},{code:`Minus`},{code:`Equal`},{action:`Backspace`,label:`⌫`,ariaLabel:`Backspace`,width:`backspace`}],[{spacer:`indent`},{code:`KeyQ`},{code:`KeyW`},{code:`KeyE`},{code:`KeyR`},{code:`KeyT`},{code:`KeyY`},{code:`KeyU`},{code:`KeyI`},{code:`KeyO`},{code:`KeyP`},{code:`BracketLeft`},{code:`BracketRight`},{code:`Backslash`}],[{toggle:`Caps`,label:`⌂`,ariaLabel:`Caps lock`,width:`caps`},{code:`KeyA`},{code:`KeyS`},{code:`KeyD`},{code:`KeyF`},{code:`KeyG`},{code:`KeyH`},{code:`KeyJ`},{code:`KeyK`},{code:`KeyL`},{code:`Semicolon`},{code:`Quote`},{action:`Enter`,label:`Enter`,ariaLabel:`Enter`,width:`enter`}],[{toggle:`Shift`,label:`⇧`,ariaLabel:`Shift`,width:`shift`},{code:`KeyZ`},{code:`KeyX`},{code:`KeyC`},{code:`KeyV`},{code:`KeyB`},{code:`KeyN`},{code:`KeyM`},{code:`Comma`},{code:`Period`},{code:`Slash`},{toggle:`Shift`,label:`⇧`,ariaLabel:`Shift`,width:`shift`}],[{toggle:`Alt`,label:`Alt`,ariaLabel:`Alt`,width:`alt`},{code:`Space`,width:`space`,variant:`spacebar`},{toggle:`Alt`,label:`Alt`,ariaLabel:`Alt`,width:`alt`}]],we=new Set(Ce.flatMap(e=>e.map(e=>e.code).filter(Boolean)).concat([`Backspace`,`Enter`,`Tab`]));function F(e,t,n){return Math.min(Math.max(e,t),n)}function I(e,t){return!!(e&&typeof e.closest==`function`&&e.closest(t))}function Te(e,t){return!!(e&&t&&typeof e.contains==`function`&&e.contains(t))}function Ee(e){return typeof e?.requestAnimationFrame==`function`?e.requestAnimationFrame.bind(e):t=>e.setTimeout(t,0)}function L(e,t){if(!t)throw Error(`Khmer NiDA keyboard requires ${e}.`);return t}function De(e=xe){return Se[e]??Se[xe]}function Oe(e){let t=e&&typeof e==`object`?e:{},n=t.position&&typeof t.position==`object`?t.position:null,r=t.size&&typeof t.size==`object`?t.size:null,i=Number(n?.left),a=Number(n?.top),o=Number(r?.width),s=Number(r?.height);return{isMinimized:!!t.isMinimized,isOpen:!!t.isOpen,position:Number.isFinite(i)&&Number.isFinite(a)?{left:Math.round(i),top:Math.round(a)}:null,size:Number.isFinite(o)&&o>0&&Number.isFinite(s)&&s>0?{height:Math.round(s),width:Math.round(o)}:null}}function ke(){return{isOpen:!1,isMinimized:!1,isLayoutMenuOpen:!1,layoutId:xe,armedShift:!1,latchedCaps:!1,physicalCapsLock:!1,latchedAlt:!1,pressedShift:!1,pressedAlt:!1,pressedCodes:new Set,position:null,size:{initialized:!1,baseWidth:0,baseHeight:0,expandedWidth:0,expandedHeight:0},resize:{pointerId:null,startX:0,startY:0,startWidth:0,startHeight:0,hasMoved:!1},drag:{pointerId:null,startX:0,startY:0,originLeft:0,originTop:0,hasMoved:!1}}}function Ae(e){let t=L(`inputElement`,e),n=t.ownerDocument,r=n?.defaultView??j;function i(){if(typeof t.selectionStart!=`number`&&typeof t.setSelectionRange==`function`){let e=String(t.value??``).length;t.setSelectionRange(e,e)}}function a(){t.focus({preventScroll:!0}),i()}function o(e=`insertText`,n=null){if(typeof r.InputEvent==`function`){t.dispatchEvent(new r.InputEvent(`input`,{bubbles:!0,inputType:e,data:n}));return}t.dispatchEvent(new r.Event(`input`,{bubbles:!0}))}function s(e,t=null){if(typeof n?.execCommand!=`function`)return!1;try{return n.execCommand(e,!1,t)}catch{return!1}}function c(e,n,r,i,a=null){t.setRangeText(e,n,r,`end`),o(i,a)}function l(){let e=String(t.value??``).length;return{direction:typeof t.selectionDirection==`string`?t.selectionDirection:`none`,start:t.selectionStart??e,end:t.selectionEnd??e}}function u(e,t,n,r){return t===n?{activePosition:t,anchorPosition:t}:r===`forward`?{activePosition:n,anchorPosition:t}:r===`backward`||e===`left`||e===`up`?{activePosition:t,anchorPosition:n}:{activePosition:n,anchorPosition:t}}function d(e,t){if(t<=0)return 0;let n=e.lastIndexOf(`
 `,t-1);return n===-1?0:n+1}function f(e,t){let n=e.indexOf(`
 `,t);return n===-1?e.length:n}function p(e,n){let r=t.selectionStart??String(t.value??``).length,i=t.selectionEnd??String(t.value??``).length;return t.setSelectionRange(e,n),s(`delete`)?!0:(t.setSelectionRange(r,i),!1)}function m(e){a(),!s(`insertText`,e)&&c(e,t.selectionStart??String(t.value??``).length,t.selectionEnd??String(t.value??``).length,e===`
