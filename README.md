@@ -123,3 +123,18 @@ duplicate.
 
 From the repo root: `npm run pack -- open-lyric-plugin-km-kh` (build
 `open-lyric` first — this package resolves against its `./internal` subpath).
+
+
+### Releasing to npm
+
+For maintainers, from a clean `main`:
+
+```bash
+npm test
+npm pack --dry-run                          # check which files go in the package
+npm whoami                                  # run `npm login` if this fails
+npm version patch --tag-version-prefix=""   # or minor / major
+npm publish
+git push origin main --follow-tags
+npm view open-lyric-plugin-km-kh version                   # confirm the new version is live
+```

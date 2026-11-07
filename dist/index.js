@@ -51,10 +51,30 @@ Use this example to test Khmer-only Open Lyric sections with a simple worship fl
 - Locales: en-US, km-KH\r
 - Time: 4/4\r
 - Structure: IV1CV2CO\r
+- Strumming Patterns:\r
+	// Slow rolling pulse\r
+	d--u-- | d-u-d-\r
+	// Lift on the chorus\r
+	ddu--u | d-d-du\r
+- Attachments:\r
+    https://example.com/audio/quiet-river-demo.mp3\r
+    [Piano Chart](file:///C:/Charts/quiet-river-at-dawn.pdf)\r
+    https://youtu.be/ZSsOrph7rJs?list=RDZSsOrph7rJs\r
+      https://youtu.be/ZSsOrph7rJs?list=RDZSsOrph7rJs\r
+  https://www.openworship.app/shared/images/Blue.png\r
+  https://www.openworship.app/shared/videos/Pink%20motion.mp4\r
+https://www.openworship.app/shared/audios/Doxology%2021&22.mp3\r
+  https://davesguitarplanet.com/wp-content/uploads/-lyrics/PDFs/Blackbird.pdf\r
+  https://www.openworship.app/shared\r
 \`\`\`\r
 \r
 \`\`\`ol:Intro\r
-| G | D/F# | Em | C |\r
+{: #1 } | G | D/F# | Em | C | (2x)\r
+\r
+\r
+ពេលខ្ញុំអស់កម្លាំងទ្រង់ជាកម្លាំងថ្មី\r
+ពេលខ្ញុំភ័យខ្លាចទ្រង់នាំឲ្យមានសង្ឃឹម\r
+\r
 \`\`\`\r
 \r
 \`\`\`ol:Verse 1\r

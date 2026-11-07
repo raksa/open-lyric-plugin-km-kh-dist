@@ -1,5 +1,7 @@
 import { OpenLyricPreviewComponent } from './internal/OpenLyricPreviewComponent.js';
 import type { OpenLyricPreviewOptions, OpenLyricPreviewSetting, OpenLyricSurface, OpenLyricTheme } from './internal/types.js';
+import type { OpenLyricAttachment } from '../../plugins/OpenLyric/domain/attachments.js';
+export type { OpenLyricAttachment, OpenLyricAttachmentType, } from '../../plugins/OpenLyric/domain/attachments.js';
 export interface OpenLyricSectionInfo {
     partName: string;
     repeatText: string;
@@ -12,6 +14,12 @@ export interface OpenLyricInfo {
     metaLine: string;
     structureLine: string;
     sections: OpenLyricSectionInfo[];
+    /**
+     * The song's Config `Attachments` as records — the same list
+     * {@link OpenLyric.getAttachments} answers with, carried here so one call
+     * describes the whole song. Empty when it declares none.
+     */
+    attachments: OpenLyricAttachment[];
 }
 /**
  * What a content getter answers with — the one option
@@ -52,6 +60,25 @@ export interface OpenLyricImageOptions {
      * be re-alpha'd and is used as-is unless the value is `0`.
      */
     backgroundAlpha?: number;
+    /**
+     * Device-pixel multiplier the PNG is rasterized at — its real pixel size is
+     * `width × pixelRatio` by `height × pixelRatio`. Ignored by the `'text'` and
+     * `'html'` variants, which have no raster.
+     *
+     * Defaults to the screen's own ratio clamped to **2–3**, which is what
+     * **Download as Image** wants: a file the user keeps and may print or zoom,
+     * so erring crisp costs them nothing.
+     *
+     * That floor is wrong for an embedder that already knows the exact box it
+     * will paint into — a slide renderer, a thumbnail job. There, a ratio of 2
+     * on a 1.5-ratio screen is 4× the pixels and 4× the decoded bitmap held in
+     * memory for detail that cannot be shown, which is a real cost on low-end
+     * hardware. Such a caller should pass its own ratio (`devicePixelRatio`, or
+     * `1` for a thumbnail) alongside `width`/`height`.
+     *
+     * Values are clamped to `(0, 4]`; anything else falls back to the default.
+     */
+    pixelRatio?: number;
 }
 export interface OpenLyricElementMapOptions extends OpenLyricImageOptions {
     /**
@@ -102,6 +129,75 @@ export interface OpenLyricElementMapOptions extends OpenLyricImageOptions {
      * without them does not.
      */
     isShowingCommentText?: boolean;
+    /**
+     * Keep the Config `Attachments` — the song's links (a YouTube reference, a
+     * chart PDF) — in the `Info` entry, which is the only entry they can reach:
+     * they are listed under the song's header, and a section carries none of
+     * them. On by default, the way the preview panel shows them; pass `false` to
+     * leave them out of the card.
+     *
+     * They say where the song lives rather than how it is sung, so an `Info`
+     * slide usually wants them gone while the preview keeps them. It drops the
+     * links from every form the entry comes out in — `'text'`, `'html'` and
+     * `'png-image'` — so the three stay in agreement, and it is the section
+     * counterpart of {@link OpenLyricValueOptions.isShowingAttachments}.
+     *
+     * A map without the card ({@link isWithInfo} off, or one scoped to a real
+     * part) has nothing for this to hide. The records themselves stay readable
+     * with {@link OpenLyric.getAttachments}, which reads the song and is
+     * untouched by this.
+     */
+    isShowingAttachments?: boolean;
+    /**
+     * Keep the Config `Strumming Patterns` — the song's strum-hand grids — in the
+     * `Info` entry, which is the only entry they can reach: they are drawn under
+     * the song's header, and a section carries none of them. On by default, the
+     * way the preview panel shows them; pass `false` to leave them out of the
+     * card.
+     *
+     * They say how the song is played rather than what is sung, so a lyric slide
+     * usually wants them gone while the preview keeps them. It drops the grids
+     * from every form the entry comes out in — `'text'`, `'html'` and
+     * `'png-image'` — so the three stay in agreement, and it is the section
+     * counterpart of {@link OpenLyricValueOptions.isShowingStrummingPatterns}.
+     *
+     * A map without the card ({@link isWithInfo} off, or one scoped to a real
+     * part) has nothing for this to hide. It hides the Config field alone: a
+     * `{p: 1}` marker inside a section is notation the section carries, and it
+     * stays where it is.
+     */
+    isShowingStrummingPatterns?: boolean;
+    /**
+     * Keep the section's flow-index badge — the 1-based position the structure
+     * counts it off at, drawn in the corner of the card. On by default, the way
+     * the preview panel shows it; pass `false` to leave it out.
+     *
+     * Worth turning off for a slide deck, because the map is keyed by PART: a
+     * Chorus sung twice is one entry, so it can only carry one of the positions
+     * it is sung at, and a map read end to end then counts with a gap in it.
+     * The structure is the thing that sequences the parts, and a caller walking
+     * it already knows which step each entry is standing in for.
+     *
+     * Image and HTML only — a `'text'` map has no badge to keep, and the number
+     * is not part of the section's words.
+     */
+    isShowingIndex?: boolean;
+    /**
+     * Write the flow-index badge as `index/total` — `3/6` rather than `3` — so a
+     * tile says how far into the song it is without the rest of the map in hand.
+     * Off by default, and it needs {@link isShowingIndex} (which is on by
+     * default): with the badge gone there is nothing to total.
+     *
+     * `total` is the length of the FLOW, not the number of entries in the map:
+     * `Structure: IV1CV2CO` totals 6 while the map holds 5, because the Chorus
+     * sung at steps 3 and 5 is one entry. So the numbers describe the song's own
+     * running order, and a deck built straight off the map — where they would
+     * count `1/6, 2/6, 3/6, 4/6, 6/6` — usually wants {@link isShowingIndex}
+     * off instead.
+     *
+     * Image and HTML only, like {@link isShowingIndex}.
+     */
+    isShowingTotalIndex?: boolean;
     /**
      * Scope the map to ONE section (part) name — `'Verse 1'` yields
      * `{ 'Verse 1': … }`. The render pipeline is scoped too, so the rest of the
@@ -241,6 +337,37 @@ export interface OpenLyricValueOptions extends OpenLyricImageOptions {
      * (see {@link OpenLyricOptions.isShowingCommentText}).
      */
     isShowingCommentText?: boolean;
+    /**
+     * Keep the Config `Attachments` — the song's links (a YouTube reference, a
+     * chart PDF), listed under the header in the rendered forms and as an
+     * `- Attachments:` block in the text. On by default, the way the preview
+     * panel shows them; pass `false` to leave them out of the value.
+     *
+     * They say where the song lives rather than how it is sung, so a slide image
+     * or a hand-out usually wants them gone while the preview keeps them. It
+     * drops the links from every form — `'text'`, `'html'` and `'png-image'` —
+     * so the three stay in agreement.
+     *
+     * The records themselves are still readable with
+     * {@link OpenLyric.getAttachments}, which reads the song and is untouched by
+     * this.
+     */
+    isShowingAttachments?: boolean;
+    /**
+     * Keep the Config `Strumming Patterns` — the song's strum-hand grids, drawn
+     * under the header in the rendered forms and listed as a
+     * `Strumming Pattern(s):` block in the text. On by default, the way the
+     * preview panel shows them; pass `false` to leave them out of the value.
+     *
+     * They say how the song is played rather than what is sung, so a lyric slide
+     * or a hand-out for singers usually wants them gone while the preview keeps
+     * them. It drops the grids from every form — `'text'`, `'html'` and
+     * `'png-image'` — so the three stay in agreement.
+     *
+     * It hides the Config field alone: a `{p: 1}` marker inside a section is
+     * notation that section carries, and it stays where it is.
+     */
+    isShowingStrummingPatterns?: boolean;
     /**
      * Image and HTML. The font family the song is rendered in — a CSS
      * `font-family` value (`'Georgia, serif'`), overriding whatever face this
@@ -503,6 +630,13 @@ export declare class OpenLyric extends OpenLyricPreviewComponent {
      * as one more image in the same card box the sections come out in. See
      * {@link OpenLyricElementMapOptions.isWithInfo} to leave it out.
      *
+     * The song's Config `Attachments` come along inside that entry the way the
+     * panel lists them — under the header, so no section carries any —
+     * and `isShowingAttachments: false` leaves the links out of it. The Config
+     * `Strumming Patterns` ride along in that entry for the same reason — they
+     * are drawn under the header — and `isShowingStrummingPatterns: false`
+     * leaves the grids out of it.
+     *
      * `{ key: 'Verse 1' }` narrows it to that one entry and renders only that
      * section, so asking for one part costs one part's work; `{ key: 'Info' }`
      * narrows it to the information card the same way.
@@ -536,6 +670,11 @@ export declare class OpenLyric extends OpenLyricPreviewComponent {
      * mirror the app's Copy as Text / Download as Image output. Pass
      * `isWithKeyNote: true` to force them on or `false` to force them off.
      *
+     * The song's Config `Attachments` come along the way the panel lists them;
+     * `isShowingAttachments: false` leaves the links out of all three forms, and
+     * `isShowingStrummingPatterns: false` does the same for the Config
+     * `Strumming Patterns`.
+     *
      * The image can also be asked for in another look than the one on screen:
      * `{ theme }` renders it in that theme's colours and `{ css }` adds rules
      * scoped to the export surface alone — both leave the live preview untouched.
@@ -547,8 +686,28 @@ export declare class OpenLyric extends OpenLyricPreviewComponent {
      * deferred, so every variant resolves on one uniform call shape.
      */
     getValue(options: OpenLyricValueOptions): Promise<string>;
-    /** Song metadata: title, sections, key, structure. */
+    /** Song metadata: title, sections, key, structure, attachments. */
     getInfo(): OpenLyricInfo | null;
+    /**
+     * The song's attachments — the Config `Attachments` field read as records,
+     * in the order they are written:
+     *
+     * ```js
+     * [{ title: 'demo.mp3', type: 'audio', link: 'https://example.com/demo.mp3' }]
+     * ```
+     *
+     * `title` is the Markdown link's text (`[Piano Chart](file:///…)`) when the
+     * line is one, and otherwise derived from the URL — its last path segment, or
+     * its host when the path has nothing to name. `type` is a guess from the URL
+     * alone (`youtube` for a YouTube host, then the file extension, then
+     * `'other'`), so it says what to *build* for the link — a player, a download,
+     * a thumbnail — without fetching it.
+     *
+     * Empty when the song has no Config or no `Attachments`. Like
+     * {@link getInfo}, it reads the current value directly, so it answers before
+     * the preview is mounted.
+     */
+    getAttachments(): OpenLyricAttachment[];
     protected rootClassName(): string;
     protected resolveRendererTarget(target: string): {
         selector: string;
@@ -574,6 +733,12 @@ export declare class OpenLyric extends OpenLyricPreviewComponent {
      *
      * `showComments` is the getters' `isShowingCommentText`, and reads the same
      * way as `keyNote`: omitted, the content follows what the preview shows.
+     *
+     * `showAttachments` is the getters' `isShowingAttachments`, and turns into
+     * the render pipeline's `hideAttachments`: omitted, the Config links are
+     * carried the way the preview panel lists them. `showStrummingPatterns` is
+     * the getters' `isShowingStrummingPatterns` and reads the same way, turning
+     * into `hideStrummingPatterns`.
      */
     private getContentRenderOptions;
     private buildTextElementMap;
