@@ -1,6 +1,6 @@
 # Open Lyric Plugin Khmer (km-KH)
 
-Khmer (km-KH) support for the [`open-lyric`](../open-lyric) components: the
+Khmer (km-KH) support for the [`Open Lyric`](https://github.com/raksa/open-lyric-dist#readme) components: the
 NiDA on-screen keyboard, Hunspell spellcheck with Khmer word segmentation, and
 Khmer-capable font faces.
 
@@ -61,7 +61,7 @@ Ships **ESM and CommonJS**, with per-condition TypeScript declarations:
 Resolve this package through the same condition as `open-lyric` itself. The
 core still keeps module-level state, so mixing `import` and `require` across
 the two would load two copies of it — see the dual-package note in the
-[`open-lyric` README](../open-lyric/README.md#requirements-and-caveats).
+[`Open Lyric` README](https://github.com/raksa/open-lyric-dist#requirements-and-caveats).
 
 ## What this package bundles
 
