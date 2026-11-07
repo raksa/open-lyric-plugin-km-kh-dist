@@ -1,4 +1,4 @@
-# open-lyric-plugin-km-kh
+# Open Lyric Plugin Khmer (km-KH)
 
 Khmer (km-KH) support for the [`open-lyric`](../open-lyric) components: the
 NiDA on-screen keyboard, Hunspell spellcheck with Khmer word segmentation, and
@@ -136,5 +136,5 @@ npm whoami                                  # run `npm login` if this fails
 npm version patch --tag-version-prefix=""   # or minor / major
 npm publish
 git push origin main --follow-tags
-npm view open-lyric-plugin-km-kh version                   # confirm the new version is live
+npm view open-lyric-plugin-km-kh version    # confirm the new version is live
 ```
