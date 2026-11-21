@@ -1,3 +1,22 @@
+declare function createKhmerKeyboardElements(ownerDocument: any, instanceId: any): {
+    closeButton: any;
+    keyboard: any;
+    keyboardFooter: any;
+    keyboardMode: any;
+    keyboardRows: any;
+    keyboardTitle: any;
+    layoutMenu: any;
+    layoutTrigger: any;
+    minimizeButton: any;
+    navigationButtons: {
+        up: any;
+        left: any;
+        down: any;
+        right: any;
+    };
+    resizeHandle: any;
+    spaceMode: any;
+};
 declare function mountKhmerNiDAKeyboard({ editor, monaco, onStateChange, ownerDocument, ownerWindow, preferences, refs, }: {
     editor: any;
     monaco: any;
@@ -42,4 +61,4 @@ declare const kmKhKeyboardPluginData: {
     openActionId: string;
     closeActionId: string;
 };
-export { kmKhKeyboardPluginData };
+export { createKhmerKeyboardElements, kmKhKeyboardPluginData };

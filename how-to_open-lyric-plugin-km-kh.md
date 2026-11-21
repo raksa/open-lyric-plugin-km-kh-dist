@@ -4,9 +4,16 @@ Khmer (km-KH) support for the Open Lyric components: the NiDA on-screen
 keyboard, Hunspell spellcheck with Khmer word segmentation, and Khmer-capable
 font faces.
 
-Everything Khmer ships in this package — dictionaries, the spellcheck worker,
-the keyboard, the Battambang faces. The core `open-lyric` bundle carries none of
-it, so **attaching a plugin from here is what enables Khmer** on a host.
+Everything Khmer the editor needs ships in this package: the dictionaries, the
+spellcheck worker, the keyboard, and the Battambang faces. The core
+`open-lyric` bundle carries none of it, so **attaching a plugin from here is
+what enables Khmer** on a host.
+
+The Khmer engine underneath comes from [`khmer-lint`](https://www.npmjs.com/package/khmer-lint),
+a regular dependency that npm installs with this package. That engine covers
+the script rules, the NiDA layout table, segmentation of unspaced text, and the
+spellcheck engine. The spellcheck worker carries its own copy of the engine,
+because a worker script has to be self-contained.
 
 Scope: this document covers the `open-lyric-plugin-km-kh` package only. For the
 components themselves see the `open-lyric` package's `how-to_open-lryic.md`, and
@@ -21,7 +28,8 @@ npm i open-lyric open-lyric-plugin-km-kh
 ```
 
 `open-lyric` is a **peer dependency** — this package contains no copy of it.
-Resolve both through the same module condition (`import` or `require`, not
+`khmer-lint` is a regular dependency and is installed automatically. Resolve
+`open-lyric` and this package through the same module condition (`import` or `require`, not
 both): the core keeps module-level state, and mixing the two would load it
 twice.
 

@@ -19,6 +19,8 @@ npm i open-lyric open-lyric-plugin-km-kh
 ```
 
 `open-lyric` is a peer dependency — this package contains no copy of it.
+[`khmer-lint`](https://www.npmjs.com/package/khmer-lint), the Khmer engine, is
+a regular dependency and is installed automatically.
 
 ## Use
 
@@ -65,12 +67,21 @@ the two would load two copies of it — see the dual-package note in the
 
 ## What this package bundles
 
-Everything Khmer ships here, not in `open-lyric`: the Hunspell dictionaries
-(`km_KH.aff`/`km_KH.dic` + the suggestion `.aff`), the segmentation-aware
-spellcheck worker, the NiDA keyboard and its stylesheet, and the Battambang
-`@font-face` sheet with the font files. `EditorPluginKmKh.install()` publishes
-the registry data itself, so attaching the plugin is the only thing that
-enables Khmer on a host — the core bundle carries none of it.
+Everything Khmer the editor needs ships here, not in `open-lyric`:
+
+- the Hunspell dictionaries (`km_KH.aff`/`km_KH.dic` + the suggestion `.aff`);
+- the segmentation-aware spellcheck worker;
+- the NiDA keyboard and its stylesheet;
+- the Battambang `@font-face` sheet with the font files.
+
+`EditorPluginKmKh.install()` publishes the registry data itself, so attaching
+the plugin is the only thing that enables Khmer on a host. The core bundle
+carries none of it.
+
+The Khmer engine itself is imported from `khmer-lint`, not bundled: the script
+rules, the NiDA layout table, segmentation and the spellcheck engine. The one
+exception is the spellcheck worker. A worker script has to be self-contained,
+so it carries its own compiled copy of that engine.
 
 What is *not* bundled is the core's stateful shared modules
 (`EditorPreferencesStore`, the plugin registry, the dictionary machinery):
