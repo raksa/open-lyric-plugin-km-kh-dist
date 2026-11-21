@@ -8,8 +8,8 @@
  *
  * - `EditorPluginKmKh`                   — `editor`: fonts, the Hunspell
  *   spellcheck spec, and the NiDA on-screen keyboard (Ctrl+Alt+K).
- * - `OpenLyricMarkdownManagerPluginKmKh` — `markdown`: Khmer-capable fonts.
- * - `OpenLyricPluginKmKh`                — `lyric`: Khmer-capable fonts.
+ * - `OpenLyricMarkdownManagerPluginKmKh` — `markdown`: Khmer fonts + labels.
+ * - `OpenLyricPluginKmKh`                — `lyric`: Khmer fonts + labels.
  *
  * The heavy contribution data ships WITH this package: the Hunspell
  * dictionaries (`dics/`), the segmentation-aware spellcheck worker, the NiDA
@@ -21,6 +21,7 @@
  * `packages/build-support.ts`.
  */
 export { EditorPluginKmKh, OpenLyricMarkdownManagerPluginKmKh, OpenLyricPluginKmKh, } from '../../../src/plugins/km_KH/km_KH_component_plugins.js';
+export type { KmKhLabelLanguage } from '../../../src/plugins/km_KH/km_KH_component_plugins.js';
 export { KM_KH_WEBFONT_FACE } from '../../../src/plugins/km_KH/km_KH_ol_editor.js';
 export { KHMER_BILINGUAL_PRAYER_EXAMPLE, KHMER_CALL_TO_WORSHIP_EXAMPLE, } from '../../../src/plugins/km_KH/examples/index.js';
 export { version } from './version.js';

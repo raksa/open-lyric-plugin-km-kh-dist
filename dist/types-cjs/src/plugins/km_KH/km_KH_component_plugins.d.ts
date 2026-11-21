@@ -1,4 +1,6 @@
 import type { OpenLyricComponentHost, OpenLyricContributions, OpenLyricPlugin, OpenLyricSurface } from '../../editor/components/index.js';
+/** What the label-language field can be set to. */
+type KmKhLabelLanguage = 'auto' | 'en' | 'km-KH';
 /** km-KH for the `editor` surface (`gep`). */
 declare class EditorPluginKmKh implements OpenLyricPlugin {
     readonly id = "km-KH";
@@ -38,7 +40,7 @@ declare class EditorPluginKmKh implements OpenLyricPlugin {
     get isKeyboardMounted(): boolean;
     private destroyKeyboard;
 }
-/** km-KH for the `markdown` surface (`gmp`): Khmer-capable fonts. */
+/** km-KH for the `markdown` surface (`gmp`): Khmer fonts and labels. */
 declare class OpenLyricMarkdownManagerPluginKmKh implements OpenLyricPlugin {
     readonly id = "km-KH";
     readonly apiVersion: 1;
@@ -51,10 +53,20 @@ declare class OpenLyricMarkdownManagerPluginKmKh implements OpenLyricPlugin {
      * actually resolves. See {@link installShellStyle}.
      */
     static installShellStyle(): void;
-    install(): void;
-    uninstall(): void;
+    /**
+     * The page's label language — `'auto'` (the song's `Locales` decide),
+     * `'en'` or `'km-KH'`. The same choice the settings popup's "Label
+     * language" field makes: assigning it switches every preview composing a
+     * km-KH preview plugin, updates every popup showing the field, and is
+     * remembered. An unknown value reads as `'auto'`.
+     */
+    static get labelLanguage(): KmKhLabelLanguage;
+    static set labelLanguage(next: KmKhLabelLanguage);
+    /** The page's label-language choice applies to this preview from now on. */
+    install(host: OpenLyricComponentHost): void;
+    uninstall(host: OpenLyricComponentHost): void;
 }
-/** km-KH for the `lyric` surface (`glpp`): Khmer-capable fonts. */
+/** km-KH for the `lyric` surface (`glpp`): Khmer fonts and labels. */
 declare class OpenLyricPluginKmKh implements OpenLyricPlugin {
     readonly id = "km-KH";
     readonly apiVersion: 1;
@@ -67,7 +79,18 @@ declare class OpenLyricPluginKmKh implements OpenLyricPlugin {
      * actually resolves. See {@link installShellStyle}.
      */
     static installShellStyle(): void;
-    install(): void;
-    uninstall(): void;
+    /**
+     * The page's label language — `'auto'` (the song's `Locales` decide),
+     * `'en'` or `'km-KH'`. The same choice the settings popup's "Label
+     * language" field makes: assigning it switches every preview composing a
+     * km-KH preview plugin, updates every popup showing the field, and is
+     * remembered. An unknown value reads as `'auto'`.
+     */
+    static get labelLanguage(): KmKhLabelLanguage;
+    static set labelLanguage(next: KmKhLabelLanguage);
+    /** The page's label-language choice applies to this preview from now on. */
+    install(host: OpenLyricComponentHost): void;
+    uninstall(host: OpenLyricComponentHost): void;
 }
+export type { KmKhLabelLanguage };
 export { EditorPluginKmKh, OpenLyricMarkdownManagerPluginKmKh, OpenLyricPluginKmKh, };
