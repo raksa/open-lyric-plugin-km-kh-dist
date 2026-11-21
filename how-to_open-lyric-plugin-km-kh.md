@@ -122,42 +122,42 @@ sheet (the NiDA keyboard chrome) does style elements and stays attach-scoped.
 
 ---
 
-## Khmer labels in the previews
+## Khmer in the previews
 
-The two preview plugins also translate the fixed labels a preview prints around
-a song. On a song whose `ol:Config` declares the Khmer locale —
+The two preview plugins also translate a preview's own text into Khmer. On a
+song whose `ol:Config` declares the Khmer locale —
 
 ```
 - Locales: km-KH
 ```
 
-— the lyric preview shows `ឯកសារភ្ជាប់` instead of `Attachments`, `គី` instead
-of `Key`, and so on, and the Markdown preview's `Config` card shows the field
-names the same way. `- Locales: km` matches too. A song that does not declare
-the locale keeps the English labels, on the same surface with the same plugin
-attached — the document decides, not the composition.
+— a standalone preview reads in Khmer throughout (`- Locales: km` matches too):
 
-| Label                | Khmer            |
-| -------------------- | ---------------- |
-| `Title`              | ចំណងជើង          |
-| `Subtitle`           | ចំណងជើងរង        |
-| `Artist`             | សិល្បករ          |
-| `Key`                | គី               |
-| `Time`               | សញ្ញាចង្វាក់     |
-| `Tempo`              | ល្បឿន            |
-| `Locales`            | ភាសា             |
-| `Structure`          | រចនាសម្ព័ន្ធ     |
-| `Strumming Patterns` | លំនាំចង្វាក់     |
-| `Description`        | ការពិពណ៌នា       |
-| `Copyright`          | រក្សាសិទ្ធិ      |
-| `Theme`              | ប្រធានបទ         |
-| `Genre`              | ប្រភេទ           |
-| `Style`              | រចនាបថ           |
-| `Keywords`           | ពាក្យគន្លឹះ      |
-| `Year`               | ឆ្នាំ            |
-| `Melody`             | បទភ្លេង          |
-| `Attachments`        | ឯកសារភ្ជាប់      |
-| `Untitled Song`      | បទគ្មានចំណងជើង   |
+- **the song header** — `ឯកសារភ្ជាប់` for `Attachments`, `គី` for `Key`,
+  `សញ្ញាចង្វាក់` for `Time`, `ល្បឿន` for `Tempo`, and the other `Config` field
+  names, in the lyric preview and on the Markdown preview's `Config` card;
+- **section names** — `Verse 1` → `វគ្គ 1`, `Chorus` → `បន្ទរ`, `Intro` →
+  `ផ្ដើម`, `Outro` → `បញ្ចប់`, `Bridge` → `ស្ពាន`, and the rest of the standard
+  names, in titles and in the structure line;
+- **the settings popup** — its title, Font size, Font family, the key and
+  display controls (`សម្រួល`, `លាក់បារ`, `លាក់ខដ`), Show comments, Reset, and
+  the fields other plugins add there (the strum player's Instrument);
+- **the actions menu and export progress** — Copy as Text, Download as Image,
+  Download as PowerPoint, Print;
+- **the Markdown preview's editing controls** — Add Config, Add Lyric, and the
+  Edit / Rename / Delete / Remove captions on each field and section;
+- **tooltips** and screen-reader labels on all of the above.
+
+A song that does not declare the locale keeps English, on the same surface
+with the same plugin attached — the document decides, not the composition.
+
+What stays as written: lyrics, field values, chord and key names, attachment
+links, and any name the author chose (a strumming pattern's, a custom
+section's). The notation is unchanged, so a song is still written with
+`ol:Verse 1` and `- Attachments:`. Also not translated: the plain-text form of
+a song, the chord popup, and — on a preview mounted with `adoptContainer` —
+anything but the song header, since the page around an adopted panel belongs
+to the host.
 
 ### Choosing the label language
 
@@ -190,11 +190,6 @@ Assigning it does exactly what picking the option does: every composing preview
 re-renders, every open popup shows it, and it is stored. An unknown value reads
 as `'auto'`. `OpenLyricMarkdownManagerPluginKmKh.labelLanguage` is the same
 value. The type is exported as `KmKhLabelLanguage`.
-
-Only these labels change. Section names, lyrics and field values are the
-author's text and are shown as written; the notation itself is unchanged, so a
-song is still written with `- Attachments:`. The plain-text form of a song and
-the controls' tooltips and menus stay in English.
 
 ---
 

@@ -22,13 +22,4 @@ declare const KM_KH_FONT_FACES: any[];
 declare const KM_KH_FONT_SAMPLE_TEXT = "\u1785\u1798\u17D2\u179A\u17C0\u1784\u179F\u17B6\u1780\u179B\u17D2\u1794\u1784";
 /** CSS font stack for the faces above, as the preview surfaces apply it. */
 declare const KM_KH_FONT_STACK: string;
-/**
- * Khmer for the fixed labels the preview surfaces print around a song, keyed
- * by the English label the core renders: the `ol:Config` field names and the
- * placeholder title. The component plugins contribute it as `language.labels`
- * (`km_KH_component_plugins.ts`), so it applies to a song whose `Locales`
- * declare `km-KH` and leaves every other song in English. What the author
- * wrote — section names, lyrics, values — is never translated.
- */
-declare const KM_KH_PREVIEW_LABELS: Readonly<Record<string, string>>;
-export { KM_KH_FONT_FACES, KM_KH_FONT_SAMPLE_TEXT, KM_KH_FONT_STACK, KM_KH_PREVIEW_LABELS, KM_KH_SYSTEM_FONT_FACES, KM_KH_WEBFONT_FACE, };
+export { KM_KH_FONT_FACES, KM_KH_FONT_SAMPLE_TEXT, KM_KH_FONT_STACK, KM_KH_SYSTEM_FONT_FACES, KM_KH_WEBFONT_FACE, };
