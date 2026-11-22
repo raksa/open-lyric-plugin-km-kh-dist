@@ -18,8 +18,15 @@ export { KHMER_BASE_LETTER_RE, KHMER_SUGGEST_TRIGGER_CHARACTERS, KHMER_WORD_EXAC
 declare const KM_KH_WEBFONT_FACE = "editor-Battambang";
 declare const KM_KH_SYSTEM_FONT_FACES: any[];
 declare const KM_KH_FONT_FACES: any[];
+/**
+ * What the webfont is really called: an exported deck names it so, since no
+ * computer has a font called {@link KM_KH_WEBFONT_FACE}.
+ */
+declare const KM_KH_FONT_NAMES: Readonly<{
+    "editor-Battambang": "Battambang";
+}>;
 /** Khmer glyphs, so a font-load probe actually resolves the Khmer face. */
 declare const KM_KH_FONT_SAMPLE_TEXT = "\u1785\u1798\u17D2\u179A\u17C0\u1784\u179F\u17B6\u1780\u179B\u17D2\u1794\u1784";
 /** CSS font stack for the faces above, as the preview surfaces apply it. */
 declare const KM_KH_FONT_STACK: string;
-export { KM_KH_FONT_FACES, KM_KH_FONT_SAMPLE_TEXT, KM_KH_FONT_STACK, KM_KH_SYSTEM_FONT_FACES, KM_KH_WEBFONT_FACE, };
+export { KM_KH_FONT_FACES, KM_KH_FONT_NAMES, KM_KH_FONT_SAMPLE_TEXT, KM_KH_FONT_STACK, KM_KH_SYSTEM_FONT_FACES, KM_KH_WEBFONT_FACE, };

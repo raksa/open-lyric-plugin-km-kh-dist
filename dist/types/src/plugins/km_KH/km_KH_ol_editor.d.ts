@@ -97,6 +97,9 @@ declare const olEditorPluginData: {
      */
     fonts: {
         faces: any[];
+        names: Readonly<{
+            "editor-Battambang": "Battambang";
+        }>;
         stack: string;
         sampleText: string;
     };

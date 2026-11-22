@@ -93,7 +93,7 @@ import { KM_KH_WEBFONT_FACE } from 'open-lyric-plugin-km-kh';
 lyricPreview.fontFamily = KM_KH_WEBFONT_FACE;
 ```
 
-Two things to know:
+Three things to know:
 
 - **The editor surface contributes no `fontFaces`.** Composing km-KH on an
   `Editor` deliberately does not restyle the text being edited: Monaco and the
@@ -103,6 +103,15 @@ Two things to know:
 - **On preview surfaces the fonts are declarative.** The plugin's font data is
   there for a host to read; the font picker is driven by the component's own
   `fontFaces` property, which the host assigns.
+- **Exports name the face Battambang.** The page loads it as
+  `KM_KH_WEBFONT_FACE` (`editor-Battambang`), a name of its own that never
+  clashes with an installed font. No computer has a font of that name, so the
+  preview plugins tell the core what it is really called (`fontNames`,
+  exported as `KM_KH_FONT_NAMES`), and a Download as Presentation deck names
+  it `Battambang`. The `.pptx` then shows in Battambang wherever it is
+  installed. The web page Download as HTML saves carries the face itself, so
+  it reads in Battambang on any computer, and so does a Download as Docx
+  Word file (the regular face; the faces are TrueType and allow embedding).
 
 ### Declaring the faces without attaching a plugin
 
@@ -140,10 +149,33 @@ song whose `ol:Config` declares the Khmer locale —
   `ផ្ដើម`, `Outro` → `បញ្ចប់`, `Bridge` → `ស្ពាន`, and the rest of the standard
   names, in titles and in the structure line;
 - **the settings popup** — its title, Font size, Font family, the key and
-  display controls (`សម្រួល`, `លាក់បារ`, `លាក់ខដ`), Show comments, Reset, and
+  display controls (`សម្រួល`, `លាក់បារ`, `លាក់ខដ`), Show comments, Show song
+  notes (`បង្ហាញកំណត់ចំណាំបទចម្រៀង`), Reset, and
   the fields other plugins add there (the strum player's Instrument);
 - **the actions menu and export progress** — Copy as Text, Download as Image,
-  Download as PowerPoint, Print;
+  Download as Presentation, Print, every step and status the progress line
+  shows with its counter (`កំពុងបង្កើត Docx (2/6)`, `បានចម្លងអត្ថបទចម្រៀង`,
+  `ផ្ទាំងលោតត្រូវបានរារាំង`) — and the Presentation options dialog that
+  Download as Presentation opens (its presets, Save preset / Rename / Delete,
+  Export presets / Import presets and the name row and messages that go with
+  them — the names you give your own presets stay as written — section
+  headers, switches,
+  font, alignment, colour, slide and card background — the picture, its
+  shade and their hints included — card size and slideshow transition
+  fields, the stage's Replay and Present and its end-of-show line, the
+  Download as PPTX and Download as HTML buttons, and the
+  slide list's captions and each slide's Omit content, Notes and Blank
+  slides after controls; the title slide's own text is the song's and stays
+  as written), the web page Download as HTML saves (its views, buttons,
+  menus, settings, presenter view, key help and messages, `ស្លាយ 3 ក្នុងចំណោម
+  12`; the page is marked `lang="km-KH"`), and the image options dialog that
+  Download as Image opens (its Preset field with the built-in presets — Square
+  post, Phone story, Widescreen slide, Chord sheet — Save preset / Rename /
+  Delete and Export / Import presets, its sizes, Shrink to fit,
+  section headers, theme, font, text size,
+  margin, switches, file format and preview status; the format names JPEG
+  and PNG stay as they are). The Markdown preview's Download as Image opens
+  the same dialog, translated the same way;
 - **the Markdown preview's editing controls** — Add Config, Add Lyric, and the
   Edit / Rename / Delete / Remove captions on each field and section;
 - **tooltips** and screen-reader labels on all of the above.

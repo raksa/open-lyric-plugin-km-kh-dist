@@ -23,5 +23,6 @@
 export { EditorPluginKmKh, OpenLyricMarkdownManagerPluginKmKh, OpenLyricPluginKmKh, } from '../../../src/plugins/km_KH/km_KH_component_plugins.js';
 export type { KmKhLabelLanguage } from '../../../src/plugins/km_KH/km_KH_component_plugins.js';
 export { KM_KH_WEBFONT_FACE } from '../../../src/plugins/km_KH/km_KH_ol_editor.js';
+export { KM_KH_FONT_NAMES } from '../../../src/plugins/km_KH/km_KH_language.js';
 export { KHMER_BILINGUAL_PRAYER_EXAMPLE, KHMER_CALL_TO_WORSHIP_EXAMPLE, } from '../../../src/plugins/km_KH/examples/index.js';
 export { version } from './version.js';
